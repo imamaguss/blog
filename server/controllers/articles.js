@@ -96,6 +96,8 @@ module.exports = {
       })
   },
 
+  
+
   addComment: (req, res) => {
     const commentObj = {
       comments: req.body.comments,
@@ -133,6 +135,20 @@ module.exports = {
         console.log(err)
       })
     
-  }
+  },
+
+  filter: (req, res) => {
+    Article
+    .find({ categoryId: req.params.categoryId })
+    .populate('authorId')
+    .populate('categoryId')
+    .then(articles => {
+      console.log(articles);
+      res.status(200).json({articles});
+    })
+    .catch(err => {
+      res.status(500).json({message: err.message});
+    })
+  },
 
 };

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { findAll, create, remove } = require('../controllers/category');
+const { findAll, create, remove, filter } = require('../controllers/category');
 
 router
   .get('/', findAll)

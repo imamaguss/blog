@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-     <div id="nav">
+    <div id="nav">
       <nav class="navbar navbar-expand-md shadow-sm mb-4 rounded" id="topnav">
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/">
             <img src="./assets/logo.png">
           </a>
         </div>
@@ -18,10 +18,10 @@
                   <router-link to="/">Home</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/about">Login</router-link>
+                  <router-link to="/login">Login</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="#">Register</router-link>
+                  <router-link to="/register">Register</router-link>
                 </li>
               </ul>
             </div>
@@ -32,45 +32,11 @@
 
     <section class="container" id="blog-body">
       <div class="row" id="content">
-        <div class="col col-md-3" id="sidebar"> <!-- sidebar -->
-          <div class="search shadow-sm mb-2 bg-white rounded">
-            <input type="search" placeholder="Search">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
-          </div>
-          
-          <div class="shadow-sm mb-2 bg-white rounded popularList" id="sidebar-item">
-            <ul class="list-group">
-              <li class="list-group-item text-muted disabled" id="sidebar-title">
-                <h6>Popular Posts</h6>
-              </li>
-              <li class="list-group-item disabled" id="sidebar-item-list">
-                <ul>
-                  <li><img src="https://via.placeholder.com/80x80" alt="article-img"></li>
-                  <li><p>Title</p></li>
-                  <li><p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium iste quam tempora. Corrupti veniam, et amet reprehenderit vero eligendi esse quas rem dolores. Modi dolorum iure debitis laboriosam sequi.</p></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div class="category" id="sidebar-item">
-            <ul class="list-group">
-              <li class="list-group-item text-muted disabled" id="sidebar-title">
-                <h6>Category</h6>
-              </li>
-              <li class="list-group-item disabled" id="sidebar-item-list"> Logic </li>
-              <li class="list-group-item disabled" id="sidebar-item-list"> OOP </li>
-              <li class="list-group-item disabled" id="sidebar-item-list"> MVC </li>
-              <li class="list-group-item disabled" id="sidebar-item-list"> Sequelize </li>
-            </ul>
-          </div>
-        </div>
-          <router-view/>
-        <Article></Article>
+        <router-view/>
       </div>
     </section>
 
-    <footer>Copyright Hacktivity 2018</footer>
+    <footer class="bg-dark">Hacktivity &copy; 2018</footer>
     
   </div>
 </template>
@@ -127,8 +93,8 @@ body {
 
 #blog-body {
   max-width: 900px;
-  min-height: 900px;
-  max-height: 2200px;
+  min-height: 518px;
+  /* max-height: 2200px; */
 }
 
 /* sidebar */
@@ -189,11 +155,10 @@ body {
   display: inline-block;
   margin-right: 5px;
   text-align: justify
-}
+} 
 
 footer {
-  padding: 5px;
-  background-color: #008426;
+  padding: 10px;
   color: white;
   margin-top: 10px;
 }

@@ -1,4 +1,5 @@
 const Category = require('../models/Category');
+const Article = require('../models/Article');
 
 module.exports = {
   findAll: (req, res) => {
@@ -40,6 +41,12 @@ module.exports = {
       .catch(err => {
         res.status(500).json({ message: err.message });
       })
+  },
+
+  filter: (req, res) => {
+    console.log(req.params);
+    Article
+      .find({ })
   }
 
 };
