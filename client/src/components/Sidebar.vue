@@ -37,7 +37,7 @@
 </template>
 
 <script>
-const baseUrl = 'http://localhost:3012'
+const baseUrl = 'http://35.198.254.14'
 import axios from 'axios'
 export default {
   data () {

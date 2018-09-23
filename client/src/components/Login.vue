@@ -28,20 +28,20 @@
       }
     },
     watch: {
-      password () {
-        if (this.password.length < 6) {
-          document.getElementById('x').style.color = "red"
-        } else {
-          document.getElementById('x').style.color = "blue"
-        }
-      }
+      // password () {
+      //   if (this.password.length < 6) {
+      //     document.getElementById('x').style.color = "red"
+      //   } else {
+      //     document.getElementById('x').style.color = "blue"
+      //   }
+      // }
     },
     methods: {
       login(email, password) {
         let self = this;
         axios({
           method: 'post',
-          url: 'http://localhost:3012/users/signin',
+          url: 'http://35.198.254.14/users/signin',
           data: { email, password }
         })
         .then(result => {

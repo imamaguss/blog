@@ -41,7 +41,7 @@
     created: function() {
       let self = this;    
       axios
-        .get('http://localhost:3012/articles')
+        .get('http://35.198.254.14/articles')
         .then(result => {
           self.articles = result.data.articles;
           if(!self.getarticle.length) {
