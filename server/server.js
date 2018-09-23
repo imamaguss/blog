@@ -7,7 +7,7 @@ const userRouter = require('./routes/users');
 const articleRouter = require('./routes/articles');
 const categoryRouter = require('./routes/categories');
 
-mongoose.connect(process.env.DB, () => { console.log('DB connected') });
+mongoose.connect(process.env.DB, () => console.log('DB connected'));
 
 server
   .use(express.urlencoded({ extended: false }))
@@ -20,4 +20,4 @@ server
   .use('/categories', categoryRouter)
   .listen(process.env.PORT || 3000, () => {
     console.log(`Server running on port ${process.env.PORT || 3000}`);
-  })
+  });

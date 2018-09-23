@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Comment = require('./Comment');
 
 const articleSchema = new Schema({
   title: String,
-  
   authorId: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -12,16 +12,9 @@ const articleSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Category'
   },
+  image: String,
   content: String,
-  comment: {
-    type: String,
-    default: null
-  },
-  commenter: [{
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    default: null
-  }],
+  comments: [Comment.schema],
 }, { timestamps: true });
 
 const Article = mongoose.model('Article', articleSchema);

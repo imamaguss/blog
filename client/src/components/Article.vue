@@ -1,0 +1,101 @@
+<template>
+  <div class="col col-md-9" id="article-header"> <!-- right content -->
+    <div class="card shadow mb-5 bg-white rounded" id="article" v-for="(article, index) in articles">
+      <div class="card-body" >
+        <div class="card-item" >
+        <h5 class="card-title">{{ article.title }}</h5>
+        </div>
+        <div class="card-item">
+          <ul class="text-muted" id="article-info">
+            <li id="author"><i class="fas fa-user"></i> {{ article.authorId.name }} </li>
+            <li id="created"><i class="fas fa-calendar-alt"></i> {{ article.createdAt }} </li>
+            <li id="category"><i class="fas fa-folder"></i> {{ article.categoryId.name }} </li>
+            <li id="comments"><i class="fas fa-comments"></i> {{ article.comments.length }} comments</li>
+          </ul>
+        </div>
+        <hr id="article">
+        <div id="description" class="article-description">
+          <img id="thumbnail" src="https://via.placeholder.com/180x140" :alt="article.title"> 
+          <!-- <img id="thumbnail" :src="article.image" :alt="article.title">  -->
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium iste quam tempora. Corrupti veniam, et amet reprehenderit vero eligendi esse quas rem dolores. Modi dolorum iure debitis laboriosam sequi.</p> 
+          <a href="#" id="readMore"><i>Read More </i><i class="fas fa-angle-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+export default {
+  data: () => {
+    return {
+      articles: [],
+    }
+  },
+
+  created: function() {
+    // console.log('masuk');
+    let self = this;    
+    axios.get('http://localhost:3012/articles')
+      .then(result => {
+        console.log('====>', result.data.articles);
+        self.articles = result.data.articles;
+      })
+      .catch(err => {
+        console.log(err);
+        
+      })
+  }
+}
+</script>
+
+<style>
+#article-header #article {
+  margin-bottom: 20px !important;
+}
+
+#article, #list-group-item {
+  border-radius: 2px;
+  border-top: 5px solid #00CC7F;
+  padding: 0;
+  text-align: left;
+}
+
+ul#article-info li {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 12px;
+}
+
+hr#article {
+  border-radius: 0;
+  border-top: 4px solid #90FFD5;
+  color: grey;
+}
+
+.card-item {
+  margin: 0;
+}
+
+#description #thumbnail{
+  position: relative;
+  float: left;
+  padding-right: 10px;
+  width: 180px;
+  height: 140px;
+}
+
+#description p.card-text {
+  text-align: justify;
+}
+
+#readMore {
+  float: right;
+  color: #18B978;
+  position: relative;
+}
+
+</style>

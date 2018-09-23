@@ -1,10 +1,18 @@
 const router = require('express').Router();
-const { create, findAll, update, remove } = require('../controllers/articles');
 const { isLogin } = require('../midlewares/isLogin');
+const { 
+  create, update, remove,
+  findAll, findById, 
+  addComment, removeComment 
+} = require('../controllers/articles');
 
-router.post('/', isLogin, create);
-router.get('/', findAll);
-router.put('/:id', isLogin, update);
-router.delete('/:id', isLogin, remove);
-
+router
+  .post('/', isLogin, create)
+  .get('/', findAll)
+  .get('/:id', findById)
+  .put('/:id', isLogin, update)
+  .delete('/:id', isLogin, remove)
+  .put('/:id/comment', isLogin, addComment)
+  .put('/:id/comment/:commentId', isLogin, removeComment)
+  
 module.exports = router;
