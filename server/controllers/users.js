@@ -11,7 +11,7 @@ module.exports = {
         password: encrypt(req.body.password)
       })
       .then(result => {
-        res.status(200).json({ message: `${result.name} has been new Users` });
+        res.status(200).json({ message: `Hii ${result.name}, now you are a part of our big family` });
       })
       .catch(err => {
         res.status(500).json({ message: err.message });

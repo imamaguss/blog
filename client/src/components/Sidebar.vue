@@ -26,9 +26,6 @@
           <li class="list-group-item text-muted disabled" id="sidebar-title">
             <h6>Categories</h6>
           </li>
-          <!-- <li class="list-group-item" id="sidebar-item-list">
-            <a @click="getAllArticle">All Category</a>
-          </li> -->
           <li class="list-group-item disabled" id="sidebar-item-list" v-for="category in categories" v-bind:key=category.id> 
             <a @click="filter(category._id)">
               {{ category.name }}
@@ -36,14 +33,14 @@
           </li>
         </ul>
       </div>
-    <!-- </div> -->
   </div>
 </template>
 
 <script>
+const baseUrl = 'http://localhost:3012'
 import axios from 'axios'
 export default {
-  data: () => {
+  data () {
     return {
       categories: [],
       articles: []
@@ -53,22 +50,19 @@ export default {
   created: function() {
     let self = this;
     axios
-      .get('http://localhost:3012/categories')
+      .get(`${baseUrl}/categories`)
       .then(result => {
-        // console.log(result.data.categories);
         self.categories = result.data.categories;
       })
       .catch(err => {
-        console.log(err);
-        
+        // console.log(err);
       })
   },
 
   methods: {
     filter: function (categoryId) {
-      // console.log(categoryId);
       axios
-        .get(`http://localhost:3012/articles/category/${categoryId}`)
+        .get(`${baseUrl}/articles/category/${categoryId}`)
         .then(result => {
           self.articles = result.data.articles;
           this.$emit('articlefiltered', self.articles);
@@ -77,12 +71,6 @@ export default {
           console.log(err);
         })
     },
-
-    getAllArticle: function() {
-      axios
-        .get('http://localhost:3012/articles')
-
-    }
   }
 
 }
@@ -99,7 +87,7 @@ export default {
   }
 
   .search input {
-    width: 172px;
+    width: 164px;
   }
 
   #search-btn {

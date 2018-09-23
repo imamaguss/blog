@@ -1,12 +1,17 @@
 <template>
-  <div >
-    <div class="card shadow" id="loginForm">
-      <div class="card-body">
-        <input v-model="email" class="card-item" type="text" placeholder="Your e-mail" > <br> <br>
-        <input v-model="password" class="card-item" type="password" placeholder="Your password"> <br> <br>
-        <input type="button" @click="login(email, password)" class="btn btn-success" value="Login">
+  <div>
+    <div class="row">
+      <div class="col col-md-7"></div>
+      <div class="col col-md-5">
+        <div class="card shadow" id="loginForm">
+          <div class="card-body">
+            <input v-model="email" class="card-item" type="text" placeholder="Your e-mail" > <br> <br>
+            <input v-model="password" id="x" class="card-item" type="password" placeholder="Your password"> <br> <br>
+            <input type="button" @click="login(email, password)" class="btn btn-success" id="login-btn" value="Login">
+          </div>
+            <p>Don't have account? Please regist <a href="/register">here.</a></p>
+        </div>
       </div>
-        <p>Don't have account? Please regist <a href="#">here.</a></p>
     </div>
   </div>
 </template>
@@ -14,17 +19,25 @@
 <script>
   import axios from 'axios'
   export default {
-    data: () => {
+    name: 'Login',
+    data () {
       return {
         email: '',
         password: '',
         message: '',
-        token: ''
       }
     },
-
+    watch: {
+      password () {
+        if (this.password.length < 6) {
+          document.getElementById('x').style.color = "red"
+        } else {
+          document.getElementById('x').style.color = "blue"
+        }
+      }
+    },
     methods: {
-      login: (email, password) => {
+      login(email, password) {
         let self = this;
         axios({
           method: 'post',
@@ -32,10 +45,14 @@
           data: { email, password }
         })
         .then(result => {
-          console.log(result.data.message);
-          console.log(result.data.token);
-          self.message = result.data.message;
-          self.token = result.data.token;
+          // console.log(result.data.message);
+          // console.log(result.data.token);
+          localStorage.setItem('token', result.data.token);
+          // self.$router.push('/')
+          this.$parent.$parent.isLogin = true
+          this.$router.push('/');
+          // console.log(this.$parent);
+          
         })
         .catch(err => {
           console.log(err);
@@ -56,5 +73,9 @@
 
   p a {
     color: #00CC7F;
+  }
+
+  #login-btn {
+    border-radius: 0;
   }
 </style>

@@ -8,7 +8,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a class="navbar-brand" href="/">
-            <img src="./assets/logo.png">
+            <h2 style="color:white">Hacktivity</h2>
           </a>
         </div>
           <div class="form-inline my-2 my-lg-0">
@@ -17,11 +17,14 @@
                 <li class="nav-item">
                   <router-link to="/">Home</router-link>
                 </li>
-                <li class="nav-item">
+                <li v-if="!isLogin" class="nav-item">
                   <router-link to="/login">Login</router-link>
                 </li>
-                <li class="nav-item">
+                <li v-if="!isLogin" class="nav-item">
                   <router-link to="/register">Register</router-link>
+                </li>
+                <li v-else class="nav-item">
+                  <a href="" @click="logout">Logout</a>
                 </li>
               </ul>
             </div>
@@ -32,11 +35,11 @@
 
     <section class="container" id="blog-body">
       <div class="row" id="content">
-        <router-view/>
       </div>
+        <router-view/>
     </section>
 
-    <footer class="bg-dark">Hacktivity &copy; 2018</footer>
+    <footer class="bg-dark"><a href="/">Hacktivity</a> &copy; 2018</footer>
     
   </div>
 </template>
@@ -44,8 +47,32 @@
 <script>
   import Article from './components/Article'
   export default {
+    data() {
+      return {
+        isLogin: false,
+      }
+    },
     components: {
       Article
+    },
+    created: function() {
+      const token = localStorage.getItem('token');
+      if(token) {
+        this.isLogin = true;
+      }
+    },
+    methods: {
+      logout: () => {
+        localStorage.removeItem('token');
+        this.isLogin = false;
+      }
+    },
+    computed: {
+      isLogin: function() {
+        if(this.isLogin === true) {
+          
+        }
+      }
     }
   }
   
@@ -93,73 +120,17 @@ body {
 
 #blog-body {
   max-width: 900px;
-  min-height: 518px;
-  /* max-height: 2200px; */
+  min-height: 528px;
 }
-
-/* sidebar */
-
-#sidebar {
-  padding-right: 10px;
-}
-
-.search {
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-.search input {
-  width: 170px;
-}
-
-#search-btn {
-  padding: 0 5px 0 5px;
-}
-
-#sidebar-title {
-  padding: 3px 20px;
-  
-}
-
-#sidebar-item {
-  text-align: left;
-  padding: 0;
-  margin-bottom: 10px;
-}
-
-.popularList#sidebar-item #sidebar-item-list img {
-  position: relative;
-  float: left;
-  overflow: hidden;
-}
-
-.popularList#sidebar-item #sidebar-item-list p {
-  overflow: hidden;
-  line-height: normal;
-}
-
-#sidebar-item ul li h6 {
-  padding: 0;
-  margin: 0;
-}
-
-#sidebar-item ul li p {
-  font-size: 12px;
-}
-
-#sidebar-item-list {
-  padding: 10px
-}
-
-#sidebar-item-list ul li{
-  display: inline-block;
-  margin-right: 5px;
-  text-align: justify
-} 
 
 footer {
-  padding: 10px;
+  padding: 15px;
   color: white;
   margin-top: 10px;
+}
+
+footer a {
+  color: #008426;
+  font-weight: bold;
 }
 </style>

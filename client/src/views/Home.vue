@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <div class="row">
-      <div class="col col-md-3">
+      <div class="col-md-3">
         <Sidebar @articlefiltered="getArticles"></Sidebar>
       </div>
-      <div class="col col-md-9">
+      <div class="col-md-9">
         <Articles :getarticle="this.articleFiltered"></Articles>
       </div>
     </div>
@@ -21,7 +21,7 @@ export default {
   name: 'home',
   data: function () {
     return {
-      articleFiltered: []
+      articleFiltered: [],
     }
   },
 
@@ -32,8 +32,7 @@ export default {
   methods: {
     getArticles: function(value) {
       this.articleFiltered = value;
-      console.log('home ===>', this.articleFiltered);
-      
+      // console.log('home ===>', this.articleFiltered);
     }
   },
 

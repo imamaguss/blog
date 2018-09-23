@@ -1,8 +1,5 @@
 <template>
   <div>
-    <div v-if="!getarticle.length">
-      <h3>No Article</h3>
-    </div>
     <div v-if="getarticle.length" class=" card shadow mb-4 bg-white rounded" id="article" v-for="(article) in getarticle" v-bind:key=article.id>
       <div class="card-body" >
         <div class="card-item" >
@@ -19,7 +16,7 @@
         <hr id="article">
         <div id="description" class="article-description">
           <img id="thumbnail" src="https://via.placeholder.com/180x140" :alt="article.title"> 
-          <!-- <img id="thumbnail" :src=article.image :alt="article.title">  -->
+          <!-- <img id="thumbnail" :src="article.image" :alt="article.title">  -->
           <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium iste quam tempora. Corrupti veniam, et amet reprehenderit vero eligendi esse quas rem dolores. Modi dolorum iure debitis laboriosam sequi.</p> 
           <a href="#" id="readMore"><i>Read More </i><i class="fas fa-angle-right"></i></a>
         </div>
@@ -47,13 +44,17 @@
           if(!self.getarticle.length) {
             self.getarticle = self.articles;
           }
-          // console.log('profs ====> ', this.getarticle);
+          console.log('profs ====> ', this.getarticle);
           
         })
         .catch(err => {
           // console.log(err);
         })
     },
+
+    mounted: function() {
+      let sel
+    }
   }
 </script>
 
