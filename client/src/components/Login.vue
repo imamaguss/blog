@@ -39,9 +39,10 @@
     methods: {
       login(email, password) {
         let self = this;
+        
         axios({
           method: 'post',
-          url: 'http://localhost:3012/users/signin',
+          url: 'http://api-hacktivity.codeventure.tech/users/signin',
           data: { email, password }
         })
         .then(result => {

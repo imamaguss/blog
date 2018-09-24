@@ -40,16 +40,15 @@
 
     created: function() {
       let self = this;    
-        // .get('http://api-hacktivity.codeventure.tech/articles')
+        // .get('http://localhost:3012/articles')
       axios
-        .get('http://localhost:3012/articles')
+        .get('http://api-hacktivity.codeventure.tech/articles')
         .then(result => {
           self.articles = result.data.articles;
           if(!self.getarticle.length) {
             self.getarticle = self.articles;
           }
           // console.log('profs ====> ', this.getarticle);
-          
         })
         .catch(err => {
           // console.log(err);

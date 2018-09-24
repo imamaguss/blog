@@ -37,7 +37,7 @@
 </template>
 
 <script>
-const baseUrl = 'http://localhost:3012'
+const baseUrl = 'http://api-hacktivity.codeventure.tech'
 import axios from 'axios'
 export default {
   data () {

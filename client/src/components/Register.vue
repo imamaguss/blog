@@ -18,7 +18,7 @@
 
 <script>
 import axios from 'axios'
-const baseUrl = 'http://localhost:3012'
+const baseUrl = 'http://api-hacktivity.codeventure.tech'
 export default {
   name: 'Register',
   data () {
