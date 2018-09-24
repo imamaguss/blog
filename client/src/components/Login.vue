@@ -41,18 +41,13 @@
         let self = this;
         axios({
           method: 'post',
-          url: 'http://35.198.254.14/users/signin',
+          url: 'http://localhost:3012/users/signin',
           data: { email, password }
         })
         .then(result => {
-          // console.log(result.data.message);
-          // console.log(result.data.token);
-          localStorage.setItem('token', result.data.token);
-          // self.$router.push('/')
           this.$parent.$parent.isLogin = true
           this.$router.push('/');
-          // console.log(this.$parent);
-          
+          localStorage.setItem('token', result.data.token);
         })
         .catch(err => {
           console.log(err);

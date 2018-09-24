@@ -18,7 +18,7 @@
 
 <script>
 import axios from 'axios'
-const baseUrl = 'http://35.198.254.14'
+const baseUrl = 'http://localhost:3012'
 export default {
   name: 'Register',
   data () {

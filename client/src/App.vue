@@ -24,7 +24,14 @@
                   <router-link to="/register">Register</router-link>
                 </li>
                 <li v-else class="nav-item">
-                  <a href="" @click="logout">Logout</a>
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0 float-right">
+                    <li class="nav-item">
+                      <a href="/dashboard" @click="logout">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="" @click="logout">Logout</a>
+                    </li>
+                  </ul>
                 </li>
               </ul>
             </div>

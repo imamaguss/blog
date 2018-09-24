@@ -40,8 +40,9 @@
 
     created: function() {
       let self = this;    
+        // .get('http://api-hacktivity.codeventure.tech/articles')
       axios
-        .get('http://35.198.254.14/articles')
+        .get('http://localhost:3012/articles')
         .then(result => {
           self.articles = result.data.articles;
           if(!self.getarticle.length) {

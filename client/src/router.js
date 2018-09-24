@@ -5,7 +5,7 @@ import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 
 Vue.use(Router)
-var router = new Router
+//var router = new Router
 export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
